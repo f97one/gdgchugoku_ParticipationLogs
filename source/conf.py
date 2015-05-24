@@ -50,7 +50,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'GDGChugoku_ParticipationLogs'
+project = u'GDGChugoku イベント参加ログ'
 copyright = u'2015, HAJIME Fukuna'
 
 # The version info for the project you're documenting, acts as replacement for
