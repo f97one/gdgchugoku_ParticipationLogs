@@ -1,0 +1,3 @@
+# gdgchugoku_ParticipationLogs
+
+GDG中国の勉強会に参加した時のメモなど
