@@ -3,13 +3,15 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to GDGChugoku_ParticipationLogs's documentation!
-========================================================
+GDG中国 イベント参加ログ
+========================
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
+
+   GDGCafe/part13_20150524
 
 
 

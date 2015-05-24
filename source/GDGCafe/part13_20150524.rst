@@ -1,0 +1,43 @@
+GDG cafe #13 (\ https://gdgchugoku.doorkeeper.jp/events/25316\ )
+============
+
+実施日
+------
+
+2015/05/25 18:00〜20:30
+
+お題目
+------
+
+* Android Studioに慣れる
+* `Androidオープンソースライブラリ徹底活用 <http://www.shuwasystem.co.jp/products/7980html/4002.html>`_ を参考に、ライブラリを使ってみる
+
+僕が参考にしたサイト
+--------------------
+
+* \ http://qiita.com/matsu911/items/28198f95026e00df73d1\ 
+
+使ってみたライブラリ
+--------------------
+
+`Butter Knife <https://github.com/JakeWharton/butterknife>`_
+    `AndroidAnnotations <https://github.com/excilys/androidannotations>`_ の代わりに使ってみた。
+
+    AndroidAnnotationsは強力な反面、Activityのソースをアノテーションプロセッサで生成させるという、半ば黒魔術的な手法を使っているため、副作用が強い。
+
+    こちらはViewのインジェクションに特化した仕様なので、副作用も小さく、安心して使うことができた。
+
+`ActiveAndroid <https://github.com/pardom/ActiveAndroid>`_ 
+    普段は `OrmLite <http://ormlite.com/>`_ を使っているが、違ったアプローチのO/Rマッパを調査してみた。
+
+    DBのファイル名やバージョンといった常套句の部分をManifestに書く仕様なのは、ある意味ありがたいが、Modelクラスの定義もManifestに書かなければならないようで、Modelが増えたときの管理が大変そう。
+
+`UnifiedPreference <https://github.com/saik0/UnifiedPreference>`_ 
+    Preferenceの画面をお手軽に作ってくれるらしい。というので調査。
+    
+    jCenterにライブラリが登録されているので、build.gradleに１行書くだけで適用できる、はずなのだが、落ちてくるのがapklib形式のため、Android Studioでは使用できない。
+    
+    Preference画面を作りたいがためにプロジェクトをaarに固め直すのも、なんだか本末転倒な感じがする。
+    
+    組織内にプライベートビルドのライブラリを置くためのMavenリポジトリがあるなら、使ってみる手はあるかもしれないが。
+
