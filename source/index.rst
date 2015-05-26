@@ -11,7 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   GDGCafe/part13_20150524
+   GDGCafe/index
 
 
 
