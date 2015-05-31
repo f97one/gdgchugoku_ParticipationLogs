@@ -37,4 +37,4 @@ GDG cafe #14 (\ https://gdgchugoku.doorkeeper.jp/events/25747\ )
 
     むぅ、ZXing 3.3でどうやったらちゃんとバーコードを読めるんだろう？
 
-
+というところまでやって、今日はバッテリーが尽きた。
