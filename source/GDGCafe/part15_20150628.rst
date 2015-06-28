@@ -1,0 +1,83 @@
+GDG cafe #15 (\ https://gdgchugoku.doorkeeper.jp/events/27467\ )
+================================================================
+
+実施日
+------
+
+2015/06/28 18:00〜20:00
+
+お題目
+------
+
+* `GDG DevFest 2015 Summerで行われたセッション資料 <https://sites.google.com/site/devfestjapan/2015summer/docs>`_ で公開されている、Androidの新機能を試す
+
+Design Support Library
+----------------------
+
+``compile 'com.android.support:design:22.0.0'`` を ``build.gradle`` に追加することで、Material Designの実装をサポートしてくれるらしい。
+
+実は未検証（汗）。
+
+Design Editor
+-------------
+
+デザイナーさん向けのGUIデザインエディタ。
+
+AS 1.3 beta 1にしていたが、mipmapの中身を触るのを忘れていたため、こちらも未検証（汗）。
+
+なお、Gradle 2.4にしないとダメとのことだが、AS 1.3になるとAS内蔵のGradleが2.4になるので、これに引きずられてプロジェクトのGradle Wrapperも2.4になる（はず）。
+
+Gradle 2.4になると、遅かったコンパイルが速くなるらしい。
+
+Native Support
+--------------
+
+Open GL使いが待ち望んだ、ASでのNDKサポート。
+
+JetBrainsのC/C++ IDEである `CLion <https://www.jetbrains.com/clion/>`_ の機能が取り込まれる予定だが、NDKを本格的に操るようなプロジェクトを用意していなかったことと、
+そもそもAS 1.3 beta 1ではまだCLionの機能がマージされていないため、お話だけ。
+
+なお、Android Gradle pluginによるNDKのビルド自体は、以前から対応できていて、NDKのインストールディレクトリを指定する箇所は、Setting内に用意されてはいる。
+
+なので、あと一歩な印象なのだが、ここまで引っ張られると *JetBrainsとの交渉が難儀しているんじゃないの？* と邪推してしまう。
+
+Enforcing Annotations
+---------------------
+
+Support Library 19.1から、 `Support Annotations <http://tools.android.com/tech-docs/support-annotations>`_ という **パラメータ検証を目的としたアノテーションライブラリ** が追加された。
+
+最新の環境では、誤ったパラメータ指定をIDEが教えてくれるようになる。 ``gradle lint`` の実行でも同様。
+
+ただしこれを使う場合、
+
+* Gradleプラグインを1.3.0-beta1にする
+* Android M Previewのplatform toolsをインストールする
+
+が必要。
+
+また、Threading Annotationsとして紹介されている以下を、要求されているスレッド以外から呼ぼうとすると、上記lintの対象となる。
+
+* @UiThread
+* @MainThread
+* @WorkerThread
+* @BinderThread
+
+なお、Androidの場合UIスレッド=メインスレッドなのは周知の事実だし、 ``@UiThread`` と ``@MainThread`` は、双方とも狭義のメインスレッド上で実行されるメソッドに付加するが、この使い分けは
+
+  @MainThread
+    ライフサイクルに関連するメソッドに対して
+  @UiThread
+    上記以外の、UIスレッド上で実行すべきメソッドに対して
+
+とするのがよい、とのこと。
+
+Data Binding
+------------
+
+XMLに定義したビューに対し、POJOとの紐づけが簡単にできるようになる。
+
+割と詳しい使用方法については、 `こちらのQiitaの記事 <http://qiita.com/hkurokawa/items/1c53c7de1c277b7f7675>`_ を参照いただきたい。
+
+記事を読む限りでは、悪名高い ``findViewById(int)`` を（ある程度は）駆逐できそうな印象。
+
+実は、個人的に一番の収穫だった。が、 `テストを書くにあたっては落とし穴がある <http://sys1yagi.hatenablog.com/entry/2015/06/17/190547>`_ らしい（汗）。
